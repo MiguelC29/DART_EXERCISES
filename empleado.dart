@@ -1,7 +1,7 @@
 import 'persona.dart';
 
 enum Rol { EMPLEADO, GERENTE }
-enum Jornada { DIURNA, NOCTURNA, FESTIVO, NO_APLICA}
+enum Jornada { DIURNA, NOCTURNA, FESTIVO, NO_APLICA }
 
 class Empleado {
   // Declaración de atributos
@@ -45,7 +45,7 @@ class Empleado {
       } else if (rol == Rol.GERENTE) {
         valorHoraExtra = 12500;
       }
-    } else if (jornadaEx == Jornada.NOCTURNA){
+    } else if (jornadaEx == Jornada.NOCTURNA) {
       //Recargo del 75% sobre el valor de la hora normal.
       if (rol == Rol.EMPLEADO) {
         valorHoraExtra = 9750;
@@ -59,7 +59,7 @@ class Empleado {
       } else if (rol == Rol.GERENTE) {
         valorHoraExtra = 20000;
       }
-    } 
+    }
 
     totalHorasExtra = valorHoraExtra * this.horasExtras;
 
@@ -89,9 +89,7 @@ class Empleado {
     double salarioBase = calcularSalarioBase();
 
     print("NÓMINA DE ${this.persona.nombre.toUpperCase()}");
-    print("Nombre Completo: ${this.persona.nombre.toUpperCase()} ${this.persona.apellido.toUpperCase()}");
-    print("Cédula: ${this.persona.cedula}");
-    print("Edad: ${this.persona.edad}");
+    this.persona.mostrarInfoPersona();
     print("Cargo: ${this.rol.name}");
     print("SalarioBase: \$${salarioBase}");
     print("Horas extra: \$${calcularHorasExtras()}");
