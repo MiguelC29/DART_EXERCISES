@@ -1,16 +1,18 @@
 import 'persona.dart';
 
 enum Rol { EMPLEADO, GERENTE }
+enum Jornada { DIURNA, NOCTURNA, FESTIVO, NO_APLICA}
 
 class Empleado {
   // Declaración de atributos
   Persona persona;
   Rol rol;
+  Jornada jornadaEx;
   int horasTrabajadas;
   int horasExtras;
 
   // Constructor
-  Empleado(this.persona, this.rol, this.horasTrabajadas, this.horasExtras);
+  Empleado(this.persona, this.rol, this.horasTrabajadas, this.horasExtras, this.jornadaEx);
 
   double calcularSalarioBase() {
     double valorHora = 0;
@@ -18,7 +20,7 @@ class Empleado {
     double salarioBase;
 
     if (rol == Rol.EMPLEADO) {
-      valorHora = 5532;
+      valorHora = 5550;
     } else if (rol == Rol.GERENTE) {
       valorHora = 10000;
     }
@@ -36,11 +38,28 @@ class Empleado {
     double valorHoraExtra = 0;
     double totalHorasExtra;
 
-    if (rol == Rol.EMPLEADO) {
-      valorHoraExtra = 6915;
-    } else if (rol == Rol.GERENTE) {
-      valorHoraExtra = 15000;
-    }
+    if (jornadaEx == Jornada.DIURNA) {
+      //Recargo del 25% sobre el valor de la hora normal.
+      if (rol == Rol.EMPLEADO) {
+        valorHoraExtra = 6950;
+      } else if (rol == Rol.GERENTE) {
+        valorHoraExtra = 12500;
+      }
+    } else if (jornadaEx == Jornada.NOCTURNA){
+      //Recargo del 75% sobre el valor de la hora normal.
+      if (rol == Rol.EMPLEADO) {
+        valorHoraExtra = 9750;
+      } else if (rol == Rol.GERENTE) {
+        valorHoraExtra = 17500;
+      }
+    } else if (jornadaEx == Jornada.FESTIVO) {
+      //Recargo del 100% sobre el valor de la hora normal.
+      if (rol == Rol.EMPLEADO) {
+        valorHoraExtra = 11100;
+      } else if (rol == Rol.GERENTE) {
+        valorHoraExtra = 20000;
+      }
+    } 
 
     totalHorasExtra = valorHoraExtra * this.horasExtras;
 
@@ -69,13 +88,14 @@ class Empleado {
   void mostrarInfoEmpleado() {
     double salarioBase = calcularSalarioBase();
 
-    print("NÓMINA DEL ${this.rol.name} ${this.persona.nombre.toUpperCase()}");
+    print("NÓMINA DE ${this.persona.nombre.toUpperCase()}");
     print("Nombre Completo: ${this.persona.nombre.toUpperCase()} ${this.persona.apellido.toUpperCase()}");
     print("Cédula: ${this.persona.cedula}");
     print("Edad: ${this.persona.edad}");
+    print("Cargo: ${this.rol.name}");
     print("SalarioBase: \$${salarioBase}");
-    print("Prestaciones Sociales: \$${calcularPrestaciones(salarioBase)}");
     print("Horas extra: \$${calcularHorasExtras()}");
+    print("Prestaciones Sociales: \$${calcularPrestaciones(salarioBase)}");
     print("Salario Neto: \$${calcularSalarioNeto()}");
   }
 }
