@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 30, bottom: 50),
               child: Icon(
                 Icons.wb_sunny_outlined,
-                size: 120,
+                size: 100,
                 color: Colors.black87,
               ),
             ),
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   padding: const EdgeInsets.all(15),
                   children: [
                     Container(
-                      height: 20,
+                      height: 50,
                       margin: const EdgeInsets.only(top: 20, bottom: 27),
                       child: const Center(
                         child: Text('OUR APP',
