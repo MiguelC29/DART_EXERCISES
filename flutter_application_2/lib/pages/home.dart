@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   OutlinedButton(onPressed: (){}, 
-                    child: const Text('Botón'),
+                    child: const Text('Iniciar Examen'),
                     style: OutlinedButton.styleFrom(
                       // backgroundColor: Colors.pink,
                       // backgroundColor: Color.fromARGB(255, 10, 11, 19),
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   OutlinedButton(onPressed: (){},
-                    child: const Text('Botón'),
+                    child: const Text('Iniciar Repaso'),
                     style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.red.shade400,
                       foregroundColor: Colors.white,
